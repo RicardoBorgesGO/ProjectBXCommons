@@ -13,11 +13,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.upschool.util.CustomDateDeserializer;
+import com.upschool.util.CustomDateSerializer;
 
 @Entity
 @Table(name = "EVENTO", schema = "PUBLIC")
@@ -37,9 +38,21 @@ public class Evento implements Serializable {
 	@Column(name = "NOME_DO_EVENTO")
 	private String nomeDoEvento;
 
-	@Column(name = "DATA_DO_EVENTO")
+	@Column(name = "DATA_INICIAL")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataDoEvento;
+
+	@Column(name = "DATA_FINAL")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataFinal;
+
+	public Evento() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Evento(Long id) {
+		this.id = id;
+	}
 
 	public Long getId() {
 		return id;
@@ -49,6 +62,7 @@ public class Evento implements Serializable {
 		this.id = id;
 	}
 
+	@JsonProperty("title")
 	public String getNomeDoEvento() {
 		return nomeDoEvento;
 	}
@@ -57,6 +71,8 @@ public class Evento implements Serializable {
 		this.nomeDoEvento = nomeDoEvento;
 	}
 
+	@JsonProperty("start")
+	@JsonSerialize(using = CustomDateSerializer.class)
 	public Date getDataDoEvento() {
 		return dataDoEvento;
 	}
@@ -64,6 +80,17 @@ public class Evento implements Serializable {
 	@JsonDeserialize(using = CustomDateDeserializer.class)
 	public void setDataDoEvento(Date dataDoEvento) {
 		this.dataDoEvento = dataDoEvento;
+	}
+
+	@JsonProperty("end")
+	@JsonSerialize(using = CustomDateSerializer.class)
+	public Date getDataFinal() {
+		return dataFinal;
+	}
+
+	@JsonDeserialize(using = CustomDateDeserializer.class)
+	public void setDataFinal(Date dataFinal) {
+		this.dataFinal = dataFinal;
 	}
 
 }
