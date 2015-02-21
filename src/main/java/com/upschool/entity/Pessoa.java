@@ -24,6 +24,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.hibernate.annotations.Proxy;
+
+import com.upschool.util.CustomDateDeserializer;
+import com.upschool.util.CustomDateSerializer;
+
 import br.com.commons.constant.EnumEstadoCivil;
 import br.com.commons.constant.EnumSexo;
 
@@ -46,7 +53,7 @@ public class Pessoa implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATA_NASCIMENTO")
-	private Date dataDeNascimento;
+	private Date dataDeNascimento; //yyyy-MM-dd
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ESTADO_CIVIL")
@@ -60,8 +67,8 @@ public class Pessoa implements Serializable {
 	@JoinColumn(name = "ENDERECO")
 	private Endereco endereco;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	@JoinColumn(name = "TELEFONE")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_pessoa")
 	private Set<Telefone> telefones;
 
 	@Column(name = "EMAIL")
@@ -83,10 +90,12 @@ public class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 
+	@JsonSerialize(using = CustomDateSerializer.class)
 	public Date getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
+	@JsonDeserialize(using = CustomDateDeserializer.class)
 	public void setDataDeNascimento(Date dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}

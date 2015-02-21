@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 import br.com.commons.constant.EnumTipoTelefone;
 
 @Entity
@@ -32,6 +34,7 @@ public class Telefone implements Serializable {
 	private String numeroDoTelefone;
 
 	@Enumerated(EnumType.STRING)
+	@Column(name = "TIPO")
 	private EnumTipoTelefone tipoTelefone;
 
 	public Telefone() {
