@@ -1,5 +1,7 @@
 package com.upschool.util;
 
+import java.lang.reflect.Type;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -24,4 +26,16 @@ public class UtilConverter {
 	public static <T> T jsonToObject(String json, Class<T> objectType) {
 		return gson.fromJson(json, objectType);
 	}
+	
+	/**
+	 * Converte JSON em Objeto, 
+	 * @param json
+	 * @param objectType
+	 * @param dateDefault
+	 * @return
+	 */
+	public static <T> T jsonToObject(String json, Type objectType) {
+		return gson.fromJson(json, objectType);
+	}
+	
 }

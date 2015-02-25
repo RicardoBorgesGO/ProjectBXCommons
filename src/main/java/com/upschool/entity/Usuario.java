@@ -1,5 +1,7 @@
 package com.upschool.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +15,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USUARIO")
-public class Usuario {
+public class Usuario implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6657566408540164483L;
 
 	@Id
 	@GeneratedValue(generator = "USUARIO_SQ", strategy = GenerationType.SEQUENCE)

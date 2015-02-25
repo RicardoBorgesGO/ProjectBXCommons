@@ -1,18 +1,18 @@
 package com.upschool.util;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-import com.upschool.entity.Evento;
 
 public class UtilJson {
 
 	private static Client client;
 
 	/**
-	 * Método singleton de Client
+	 * Mï¿½todo singleton de Client
 	 * @return
 	 */
 	public static Client getClient() {
@@ -22,7 +22,7 @@ public class UtilJson {
 	}
 
 	/**
-	 * Realiza o método POST HTML via JSON
+	 * Realiza o mï¿½todo POST HTML via JSON
 	 * @param resourceUrl: url do recurso 
 	 * @param jsonData: objeto em JSON
 	 */
@@ -52,6 +52,28 @@ public class UtilJson {
 	
 	@SuppressWarnings("unchecked")
 	public static <T> List<T> getAllObjectJson(String resourceUrl, Class<T> objectType) {
+		List<T> list = null;
+		
+		try {
+			WebResource webResource = getClient().resource(resourceUrl);
+	 
+			ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+	 
+			if (response.getStatus() != 200) {
+			   throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
+			}
+	 
+			String output = response.getEntity(String.class);
+			
+			list = (List<T>) UtilConverter.jsonToObject(output, objectType);
+		  } catch (Exception e) {
+			e.printStackTrace();
+		  }
+		return list;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static <T> List<T> getAllObjectJson(String resourceUrl, Type objectType) {
 		List<T> list = null;
 		
 		try {
