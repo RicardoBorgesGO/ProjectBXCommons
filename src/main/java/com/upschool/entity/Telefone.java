@@ -12,12 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Proxy;
-
 import br.com.commons.constant.EnumTipoTelefone;
 
 @Entity
 @Table(schema = "PUBLIC", name = "TELEFONE")
+@Deprecated
 public class Telefone implements Serializable {
 
 	/**

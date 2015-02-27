@@ -37,8 +37,4 @@ public class Dentista extends Pessoa implements Serializable {
 		this.registroNoCadastroRegionalOdontologico = registroNoCadastroRegionalOdontologico;
 	}
 	
-	public void adicionaTelefone(Telefone telefone) {
-		getTelefones().add(telefone);
-	}
-
 }

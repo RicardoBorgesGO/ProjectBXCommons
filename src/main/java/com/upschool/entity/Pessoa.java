@@ -1,9 +1,7 @@
 package com.upschool.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,7 +15,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -25,7 +22,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.apache.commons.lang.WordUtils;
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import br.com.commons.constant.EnumEstadoCivil;
@@ -66,9 +62,8 @@ public class Pessoa implements Serializable {
 	@JoinColumn(name = "ENDERECO")
 	private Endereco endereco;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_pessoa")
-	private List<Telefone> telefones;
+	@Column(name = "NUMERO_TELEFONE")
+	private String telefone;
 
 	@Column(name = "EMAIL")
 	private String email;
@@ -118,7 +113,14 @@ public class Pessoa implements Serializable {
 		this.sexo = sexo;
 	}
 
-	@JsonIgnore
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
 	public Endereco getEndereco() {
 		if (endereco == null)
 			endereco = new Endereco();
@@ -127,17 +129,6 @@ public class Pessoa implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
-
-	@JsonIgnore
-	public List<Telefone> getTelefones() {
-		if (telefones == null)
-			telefones = new ArrayList<Telefone>();
-		return telefones;
-	}
-
-	public void setTelefones(List<Telefone> telefones) {
-		this.telefones = telefones;
 	}
 
 	public String getEmail() {
