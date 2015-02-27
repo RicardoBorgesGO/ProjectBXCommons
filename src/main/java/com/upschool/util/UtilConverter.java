@@ -7,7 +7,7 @@ import com.google.gson.GsonBuilder;
 
 public class UtilConverter {
 	
-	private static Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy HH:mm").create();
+	private static Gson gsonDateTime = new GsonBuilder().setDateFormat("dd/MM/yyyy HH:mm").create();
 
 	/**
 	 * Converte Objeto em JSON
@@ -15,7 +15,7 @@ public class UtilConverter {
 	 * @return
 	 */
 	public static <T> String objectToJson(T object) {
-		return gson.toJson(object);
+		return gsonDateTime.toJson(object);
 	}
 	
 	/**
@@ -24,7 +24,7 @@ public class UtilConverter {
 	 * @return
 	 */
 	public static <T> T jsonToObject(String json, Class<T> objectType) {
-		return gson.fromJson(json, objectType);
+		return gsonDateTime.fromJson(json, objectType);
 	}
 	
 	/**
@@ -35,9 +35,7 @@ public class UtilConverter {
 	 * @return
 	 */
 	public static <T> T jsonToObject(String json, Type objectType) {
-		return gson.fromJson(json, objectType);
+		return gsonDateTime.fromJson(json, objectType);
 	}
-	
-	
 	
 }

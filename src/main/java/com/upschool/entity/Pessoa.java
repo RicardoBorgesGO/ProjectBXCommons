@@ -22,11 +22,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.apache.commons.lang.WordUtils;
+import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import br.com.commons.constant.EnumEstadoCivil;
 import br.com.commons.constant.EnumSexo;
 
+import com.upschool.util.CustomDateDeserializer;
 import com.upschool.util.CustomDefaultDateSerializer;
 
 @Entity
@@ -93,6 +95,7 @@ public class Pessoa implements Serializable {
 		return dataDeNascimento;
 	}
 
+	@JsonDeserialize(using = CustomDateDeserializer.class)
 	public void setDataDeNascimento(Date dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}

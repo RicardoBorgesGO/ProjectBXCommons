@@ -3,12 +3,12 @@ package br.com.commons.constant;
 public enum EnumEspecialidadesOdontologicas {
 
 	CIRURGIA_E_TRAUMATOLOGIA_BUCO_MAXILO_FACIAL("Cirurgia e Traumatologia Buco-Maxilo-Facial"),
-	CLINICA_GERAL("Clínica Geral"),
-	DENTISTICA("Dentística"),
-	DISFUNCAO_TEMPORO_MANDIBULAR_E_DOR_OROFACIAL("Disfunção Têmporo-Mandibular e Dor-Orofacial"),
+	CLINICA_GERAL("ClÃ­nica Geral"),
+	DENTISTICA("DentÃ­stica"),
+	DISFUNCAO_TEMPORO_MANDIBULAR_E_DOR_OROFACIAL("DisfunÃ§Ã£o TÃªmporo-Mandibular e Dor-Orofacial"),
 	ENDODONTIA("Endodontia"),
 	ESTOMATOLOGIA("Estomatologia"),
-	RADIOLOGIA_ODONTOLOGICA_E_IMAGINOLOGIA("Radiologia Odontológica e Imaginologia"),
+	RADIOLOGIA_ODONTOLOGICA_E_IMAGINOLOGIA("Radiologia OdontolÃ³gica e Imaginologia"),
 	IMPLANTODONTIA("Implantodontia"),
 	ODONTOLOGIA_LEGAL("Odontologia Legal"),
 	ODONTOGERIATRIA("Odontogeriatria"),
@@ -19,9 +19,9 @@ public enum EnumEspecialidadesOdontologicas {
 	ORTOPEDIA_FUNCIONAL_DOS_MAXILARES("Ortopedia Funcional dos Maxilares"),
 	PATOLOGIA_BUCAL("Patologia Bucal"),
 	PERIODONTIA("Periodontia"),
-	PROTESE_BUCO_MAXILO_FACIAL("Prótese Buco-Maxilo-Facial"),
-	PROTESE_DENTARIA("Prótese Dentária"),
-	SAUDE_COLETIVA("Saúde Coletiva");
+	PROTESE_BUCO_MAXILO_FACIAL("PrÃ³tese Buco-Maxilo-Facial"),
+	PROTESE_DENTARIA("PrÃ³tese DentÃ¡ria"),
+	SAUDE_COLETIVA("SaÃºde Coletiva");
 
 	private String descricao;
 
