@@ -2,8 +2,6 @@ package com.upschool.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,22 +15,21 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.apache.commons.lang.WordUtils;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.hibernate.annotations.Proxy;
-
-import com.upschool.util.CustomDateDeserializer;
-import com.upschool.util.CustomDateSerializer;
 
 import br.com.commons.constant.EnumEstadoCivil;
 import br.com.commons.constant.EnumSexo;
+
+import com.upschool.util.CustomDateDeserializer;
+import com.upschool.util.CustomDefaultDateSerializer;
 
 @Entity
 @Table(name = "PESSOA")
@@ -53,7 +50,7 @@ public class Pessoa implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATA_NASCIMENTO")
-	private Date dataDeNascimento; //yyyy-MM-dd
+	private Date dataDeNascimento;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "ESTADO_CIVIL")
@@ -67,9 +64,8 @@ public class Pessoa implements Serializable {
 	@JoinColumn(name = "ENDERECO")
 	private Endereco endereco;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "id_pessoa")
-	private Set<Telefone> telefones;
+	@Column(name = "NUMERO_TELEFONE")
+	private String telefone;
 
 	@Column(name = "EMAIL")
 	private String email;
@@ -83,14 +79,18 @@ public class Pessoa implements Serializable {
 	}
 
 	public String getNome() {
+		if (nome != null)
+			nome = WordUtils.capitalize(nome.toLowerCase());
 		return nome;
 	}
 
 	public void setNome(String nome) {
+		if (nome != null)
+			nome = nome.toUpperCase();
 		this.nome = nome;
 	}
 
-	@JsonSerialize(using = CustomDateSerializer.class)
+	@JsonSerialize(using = CustomDefaultDateSerializer.class)
 	public Date getDataDeNascimento() {
 		return dataDeNascimento;
 	}
@@ -116,6 +116,14 @@ public class Pessoa implements Serializable {
 		this.sexo = sexo;
 	}
 
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
 	public Endereco getEndereco() {
 		if (endereco == null)
 			endereco = new Endereco();
@@ -124,16 +132,6 @@ public class Pessoa implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
-
-	public Set<Telefone> getTelefones() {
-		if (telefones == null)
-			telefones = new LinkedHashSet<Telefone>();
-		return telefones;
-	}
-
-	public void setTelefones(Set<Telefone> telefones) {
-		this.telefones = telefones;
 	}
 
 	public String getEmail() {
