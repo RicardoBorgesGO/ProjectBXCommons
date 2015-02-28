@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
+
+import br.com.commons.constant.EnumEspecialidadesOdontologicas;
 
 @Entity
 @Table(schema = "PUBLIC", name = "DENTISTA")
@@ -15,16 +19,17 @@ public class Dentista extends Pessoa implements Serializable {
 	 */
 	private static final long serialVersionUID = -1206092031335697470L;
 
-	private String especialidade;
+	@Enumerated(EnumType.STRING)
+	private EnumEspecialidadesOdontologicas especialidade;
 
 	@Column(name = "CRO")
 	private String registroNoCadastroRegionalOdontologico;
 
-	public String getEspecialidade() {
+	public EnumEspecialidadesOdontologicas getEspecialidade() {
 		return especialidade;
 	}
 
-	public void setEspecialidade(String especialidade) {
+	public void setEspecialidade(EnumEspecialidadesOdontologicas especialidade) {
 		this.especialidade = especialidade;
 	}
 
@@ -35,10 +40,6 @@ public class Dentista extends Pessoa implements Serializable {
 	public void setRegistroNoCadastroRegionalOdontologico(
 			String registroNoCadastroRegionalOdontologico) {
 		this.registroNoCadastroRegionalOdontologico = registroNoCadastroRegionalOdontologico;
-	}
-	
-	public void adicionaTelefone(Telefone telefone) {
-		getTelefones().add(telefone);
 	}
 
 }
