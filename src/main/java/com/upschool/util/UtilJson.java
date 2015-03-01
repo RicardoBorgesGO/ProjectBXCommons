@@ -28,7 +28,7 @@ public class UtilJson {
 					MediaType.APPLICATION_JSON).post(ClientResponse.class,
 					jsonData);
 
-			// Lançar exceção caso o status não seja na centena 200.
+			// Lanï¿½ar exceï¿½ï¿½o caso o status nï¿½o seja na centena 200.
 			if (!String.valueOf(response.getStatus()).substring(0, 1)
 					.equals("2")) {
 				throw response.getEntity(Exception.class);
