@@ -8,12 +8,15 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
+import br.com.commons.constant.EnumAtivoInativo;
 import br.com.commons.constant.EnumEspecialidadesOdontologicas;
 
 @Entity
 @Table(schema = "PUBLIC", name = "DENTISTA")
 public class Dentista extends Pessoa implements Serializable {
 
+	//TODO Mudar de Dentista para Colaborador
+	
 	/**
 	 * 
 	 */
@@ -21,6 +24,10 @@ public class Dentista extends Pessoa implements Serializable {
 
 	@Enumerated(EnumType.STRING)
 	private EnumEspecialidadesOdontologicas especialidade;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "STATUS")
+	private EnumAtivoInativo ativoInativo;
 
 	@Column(name = "CRO")
 	private String registroNoCadastroRegionalOdontologico;
@@ -40,6 +47,14 @@ public class Dentista extends Pessoa implements Serializable {
 	public void setRegistroNoCadastroRegionalOdontologico(
 			String registroNoCadastroRegionalOdontologico) {
 		this.registroNoCadastroRegionalOdontologico = registroNoCadastroRegionalOdontologico;
+	}
+
+	public EnumAtivoInativo getAtivoInativo() {
+		return ativoInativo;
+	}
+
+	public void setAtivoInativo(EnumAtivoInativo ativoInativo) {
+		this.ativoInativo = ativoInativo;
 	}
 
 }
