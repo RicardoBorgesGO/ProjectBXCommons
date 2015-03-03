@@ -12,11 +12,9 @@ import br.com.commons.constant.EnumAtivoInativo;
 import br.com.commons.constant.EnumEspecialidadesOdontologicas;
 
 @Entity
-@Table(schema = "PUBLIC", name = "DENTISTA")
-public class Dentista extends Pessoa implements Serializable {
+@Table(schema = "PUBLIC", name = "COLABORADOR")
+public class Colaborador extends Pessoa implements Serializable {
 
-	//TODO Mudar de Dentista para Colaborador
-	
 	/**
 	 * 
 	 */
