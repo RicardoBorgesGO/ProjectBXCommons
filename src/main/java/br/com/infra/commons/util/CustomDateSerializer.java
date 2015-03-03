@@ -1,4 +1,4 @@
-package com.upschool.util;
+package br.com.infra.commons.util;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;

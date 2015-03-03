@@ -1,4 +1,4 @@
-package com.upschool.util;
+package br.com.infra.commons.util;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
@@ -8,9 +8,9 @@ public enum MensagemRespostaServico {
 
 	SUCESSO_LOGIN_REALIZADO(100, "Login realizado com sucesso."),
 
-	ERRO_USUARIO_NAO_ENCONTRADO(200, "Usuário não encontrado."),
+	ERRO_USUARIO_NAO_ENCONTRADO(200, "Usuï¿½rio nï¿½o encontrado."),
 
-	ERRO_NAO_CADASTRADO(999, "Erro não cadastrado.");
+	ERRO_NAO_CADASTRADO(999, "Erro nï¿½o cadastrado.");
 
 	private int codigo;
 	private String mensagem;

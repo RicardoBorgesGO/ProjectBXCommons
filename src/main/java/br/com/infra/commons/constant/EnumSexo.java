@@ -1,4 +1,4 @@
-package br.com.commons.constant;
+package br.com.infra.commons.constant;
 
 public enum EnumSexo {
 

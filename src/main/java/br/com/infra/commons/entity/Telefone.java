@@ -1,3 +1,4 @@
+package br.com.infra.commons.entity;
 //package com.upschool.entity;
 //
 //import java.io.Serializable;

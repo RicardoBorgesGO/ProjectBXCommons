@@ -1,9 +1,9 @@
-package br.com.commons.constant;
+package br.com.infra.commons.constant;
 
 public enum EnumEstadoCivil {
 
 	SOLTEIRO("Solteiro(a)"), CASADO("Casado(a)"), DIVORCIADO("Divorciado(a)"), VIUVO(
-			"Viúvo(a)");
+			"Viï¿½vo(a)");
 
 	private String descricao;
 

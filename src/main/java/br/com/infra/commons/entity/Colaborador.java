@@ -1,4 +1,4 @@
-package com.upschool.entity;
+package br.com.infra.commons.entity;
 
 import java.io.Serializable;
 
@@ -8,8 +8,8 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
-import br.com.commons.constant.EnumAtivoInativo;
-import br.com.commons.constant.EnumEspecialidadesOdontologicas;
+import br.com.infra.commons.constant.EnumAtivoInativo;
+import br.com.infra.commons.constant.EnumEspecialidadesOdontologicas;
 
 @Entity
 @Table(schema = "PUBLIC", name = "COLABORADOR")

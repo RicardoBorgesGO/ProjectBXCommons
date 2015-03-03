@@ -1,4 +1,4 @@
-package com.upschool.entity;
+package br.com.infra.commons.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,8 +17,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import com.upschool.util.CustomDateDeserializer;
-import com.upschool.util.CustomDateSerializer;
+import br.com.infra.commons.util.CustomDateDeserializer;
+import br.com.infra.commons.util.CustomDateSerializer;
 
 @Entity
 @Table(name = "EVENTO", schema = "PUBLIC")

@@ -1,4 +1,4 @@
-package com.upschool.entity;
+package br.com.infra.commons.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -25,11 +25,10 @@ import org.apache.commons.lang.WordUtils;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import br.com.commons.constant.EnumEstadoCivil;
-import br.com.commons.constant.EnumSexo;
-
-import com.upschool.util.CustomDateDeserializer;
-import com.upschool.util.CustomDefaultDateSerializer;
+import br.com.infra.commons.constant.EnumEstadoCivil;
+import br.com.infra.commons.constant.EnumSexo;
+import br.com.infra.commons.util.CustomDateDeserializer;
+import br.com.infra.commons.util.CustomDefaultDateSerializer;
 
 @Entity
 @Table(name = "PESSOA")
