@@ -3,7 +3,7 @@ package br.com.infra.commons.constant;
 public enum EnumEstadoCivil {
 
 	SOLTEIRO("Solteiro(a)"), CASADO("Casado(a)"), DIVORCIADO("Divorciado(a)"), VIUVO(
-			"Vi�vo(a)");
+			"Viúvo(a)");
 
 	private String descricao;
 
