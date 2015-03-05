@@ -19,14 +19,15 @@ public class UtilJson {
 		return client;
 	}
 
-	public static String postJson(String resourceUrl,
-			String jsonData) {
+	public static String postJson(String resourceUrl, String jsonData) {
 		try {
 			WebResource webResource = getClient().resource(resourceUrl);
 
-			ClientResponse response = webResource.type(
-					MediaType.APPLICATION_JSON).post(ClientResponse.class,
-					jsonData);
+			ClientResponse response = webResource
+					.type(MediaType.APPLICATION_JSON)
+					.accept(MediaType.APPLICATION_JSON)
+					.post(ClientResponse.class, jsonData);
+			System.out.println(response.getEntity(String.class));
 
 			// Lancar excecao caso o status nao seja na centena 200.
 			if (!String.valueOf(response.getStatus()).substring(0, 1)
@@ -37,8 +38,8 @@ public class UtilJson {
 			return response.getEntity(String.class);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "Substituir por exceção";
-//			return MensagemRespostaServico.ERRO_NAO_CADASTRADO;
+			// return "Substituir por exceção";
+			return MensagemRespostaServico.ERRO_NAO_CADASTRADO.getMensagem();
 		}
 	}
 

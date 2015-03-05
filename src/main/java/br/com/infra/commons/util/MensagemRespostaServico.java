@@ -1,9 +1,5 @@
 package br.com.infra.commons.util;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
-
-@JsonFormat(shape = Shape.OBJECT)
 public enum MensagemRespostaServico {
 
 	SUCESSO_LOGIN_REALIZADO(100, "Login realizado com sucesso."),
@@ -12,10 +8,10 @@ public enum MensagemRespostaServico {
 
 	ERRO_NAO_CADASTRADO(999, "Erro não cadastrado.");
 
-	private int codigo;
-	private String mensagem;
+	private final int codigo;
+	private final String mensagem;
 
-	private MensagemRespostaServico(int codigo, String mensagem) {
+	private MensagemRespostaServico(final int codigo, final String mensagem) {
 		this.codigo = codigo;
 		this.mensagem = mensagem;
 	}
@@ -26,5 +22,9 @@ public enum MensagemRespostaServico {
 
 	public String getMensagem() {
 		return this.mensagem;
+	}
+
+	public String toString() {
+		return getMensagem();
 	}
 }
