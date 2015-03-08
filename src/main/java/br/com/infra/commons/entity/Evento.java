@@ -3,11 +3,15 @@ package br.com.infra.commons.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -45,6 +49,14 @@ public class Evento implements Serializable {
 	@Column(name = "DATA_FINAL")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFinal;
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
+	@JoinColumn(name = "ID_PACIENTE")
+	private Paciente paciente;
+
+	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
+	@JoinColumn(name = "ID_COLABORADOR")
+	private Colaborador colaborador;
 
 	public Evento() {
 		// TODO Auto-generated constructor stub
@@ -91,6 +103,22 @@ public class Evento implements Serializable {
 	@JsonDeserialize(using = CustomDateDeserializer.class)
 	public void setDataFinal(Date dataFinal) {
 		this.dataFinal = dataFinal;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public Colaborador getColaborador() {
+		return colaborador;
+	}
+
+	public void setColaborador(Colaborador colaborador) {
+		this.colaborador = colaborador;
 	}
 
 }
