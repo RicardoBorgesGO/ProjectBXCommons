@@ -2,10 +2,14 @@ package br.com.infra.commons.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.com.infra.commons.constant.EnumAtivoInativo;
@@ -29,6 +33,10 @@ public class Colaborador extends Pessoa implements Serializable {
 
 	@Column(name = "CRO")
 	private String registroNoCadastroRegionalOdontologico;
+	
+	@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinColumn(name = "TIPO_COLABORADOR")
+	private TipoDeColaborador tipoDeColaborador;
 
 	public EnumEspecialidadesOdontologicas getEspecialidade() {
 		return especialidade;
