@@ -25,6 +25,8 @@ public class TipoDeColaborador implements Serializable {
 
 	private String nome;
 
+	private boolean especialidade;
+
 	public Long getId() {
 		return id;
 	}
@@ -39,6 +41,14 @@ public class TipoDeColaborador implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public boolean isEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(boolean especialidade) {
+		this.especialidade = especialidade;
 	}
 
 }

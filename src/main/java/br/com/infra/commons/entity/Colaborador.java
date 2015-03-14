@@ -33,7 +33,7 @@ public class Colaborador extends Pessoa implements Serializable {
 
 	@Column(name = "CRO")
 	private String registroNoCadastroRegionalOdontologico;
-	
+
 	@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "TIPO_COLABORADOR")
 	private TipoDeColaborador tipoDeColaborador;
@@ -61,6 +61,14 @@ public class Colaborador extends Pessoa implements Serializable {
 
 	public void setAtivoInativo(EnumAtivoInativo ativoInativo) {
 		this.ativoInativo = ativoInativo;
+	}
+
+	public TipoDeColaborador getTipoDeColaborador() {
+		return tipoDeColaborador;
+	}
+
+	public void setTipoDeColaborador(TipoDeColaborador tipoDeColaborador) {
+		this.tipoDeColaborador = tipoDeColaborador;
 	}
 
 }
