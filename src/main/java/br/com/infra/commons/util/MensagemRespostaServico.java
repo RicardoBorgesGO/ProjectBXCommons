@@ -1,6 +1,14 @@
 package br.com.infra.commons.util;
 
 public enum MensagemRespostaServico {
+	
+	SUCESSO_SALVAR(100, "Sucesso ao salvar."),
+	
+	SUCESSO_ATUALIZADAR(100, "Sucesso ao atualizar."),
+
+	ERRO_NAO_SALVO(200, "Erro ao salvar."),
+	
+	ERRO_NAO_ATUALIZADO(200, "Erro ao atualizar."),
 
 	SUCESSO_LOGIN_REALIZADO(100, "Login realizado com sucesso."),
 

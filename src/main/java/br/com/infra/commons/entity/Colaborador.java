@@ -2,7 +2,6 @@ package br.com.infra.commons.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,7 +12,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.com.infra.commons.constant.EnumAtivoInativo;
-import br.com.infra.commons.constant.EnumEspecialidadesOdontologicas;
 
 @Entity
 @Table(schema = "PUBLIC", name = "COLABORADOR")
@@ -24,8 +22,9 @@ public class Colaborador extends Pessoa implements Serializable {
 	 */
 	private static final long serialVersionUID = -1206092031335697470L;
 
-	@Enumerated(EnumType.STRING)
-	private EnumEspecialidadesOdontologicas especialidade;
+	@OneToOne(optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
+	@JoinColumn(name = "ID_ESPECIALIDADE")
+	private Especialidade especialidade;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "STATUS")
@@ -34,17 +33,9 @@ public class Colaborador extends Pessoa implements Serializable {
 	@Column(name = "CRO")
 	private String registroNoCadastroRegionalOdontologico;
 
-	@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "TIPO_COLABORADOR")
 	private TipoDeColaborador tipoDeColaborador;
-
-	public EnumEspecialidadesOdontologicas getEspecialidade() {
-		return especialidade;
-	}
-
-	public void setEspecialidade(EnumEspecialidadesOdontologicas especialidade) {
-		this.especialidade = especialidade;
-	}
 
 	public String getRegistroNoCadastroRegionalOdontologico() {
 		return registroNoCadastroRegionalOdontologico;
@@ -61,6 +52,14 @@ public class Colaborador extends Pessoa implements Serializable {
 
 	public void setAtivoInativo(EnumAtivoInativo ativoInativo) {
 		this.ativoInativo = ativoInativo;
+	}
+
+	public Especialidade getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
 	}
 
 	public TipoDeColaborador getTipoDeColaborador() {
