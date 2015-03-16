@@ -37,6 +37,18 @@ public class Colaborador extends Pessoa implements Serializable {
 	@JoinColumn(name = "TIPO_COLABORADOR")
 	private TipoDeColaborador tipoDeColaborador;
 
+	//TODO Elaborar solucao para colocar Lazy
+//	@OneToMany(mappedBy = "colaborador", fetch = FetchType.EAGER)
+//	private List<Evento> eventos;
+	
+	public Colaborador() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Colaborador(Long id) {
+		setId(id);
+	}
+
 	public String getRegistroNoCadastroRegionalOdontologico() {
 		return registroNoCadastroRegionalOdontologico;
 	}
@@ -69,5 +81,13 @@ public class Colaborador extends Pessoa implements Serializable {
 	public void setTipoDeColaborador(TipoDeColaborador tipoDeColaborador) {
 		this.tipoDeColaborador = tipoDeColaborador;
 	}
+
+//	public List<Evento> getEventos() {
+//		return eventos;
+//	}
+//
+//	public void setEventos(List<Evento> eventos) {
+//		this.eventos = eventos;
+//	}
 
 }

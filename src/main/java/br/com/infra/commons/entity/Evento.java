@@ -24,6 +24,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import br.com.infra.commons.util.CustomDateDeserializer;
 import br.com.infra.commons.util.CustomDateSerializer;
 
+
 @Entity
 @Table(name = "EVENTO", schema = "PUBLIC")
 public class Evento implements Serializable {
@@ -50,9 +51,9 @@ public class Evento implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFinal;
 
-	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
-	@JoinColumn(name = "ID_PACIENTE")
-	private Paciente paciente;
+//	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "ID_PACIENTE")
+//	private Paciente paciente;
 
 	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_COLABORADOR")
@@ -105,13 +106,13 @@ public class Evento implements Serializable {
 		this.dataFinal = dataFinal;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
+//	public Paciente getPaciente() {
+//		return paciente;
+//	}
+//
+//	public void setPaciente(Paciente paciente) {
+//		this.paciente = paciente;
+//	}
 
 	public Colaborador getColaborador() {
 		return colaborador;
