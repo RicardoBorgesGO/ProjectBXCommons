@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.apache.commons.lang.WordUtils;
+
 @Entity
 @Table(name = "TIPO_COLABORADOR", schema = "PUBLIC")
 public class TipoDeColaborador implements Serializable {
@@ -43,6 +45,12 @@ public class TipoDeColaborador implements Serializable {
 	}
 
 	public String getNome() {
+		return nome;
+	}
+	
+	public String getNomeCapitalizado() {
+		if (nome != null)
+			nome = WordUtils.capitalize(nome.toLowerCase());
 		return nome;
 	}
 
