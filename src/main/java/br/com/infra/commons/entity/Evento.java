@@ -3,7 +3,6 @@ package br.com.infra.commons.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,11 +50,11 @@ public class Evento implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFinal;
 
-//	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "ID_PACIENTE")
-//	private Paciente paciente;
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@JoinColumn(name = "ID_PACIENTE")
+	private Paciente paciente;
 
-	@ManyToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "ID_COLABORADOR")
 	private Colaborador colaborador;
 
@@ -106,15 +105,19 @@ public class Evento implements Serializable {
 		this.dataFinal = dataFinal;
 	}
 
-//	public Paciente getPaciente() {
-//		return paciente;
-//	}
-//
-//	public void setPaciente(Paciente paciente) {
-//		this.paciente = paciente;
-//	}
+	public Paciente getPaciente() {
+		if (paciente == null)
+			paciente = new Paciente();
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
 
 	public Colaborador getColaborador() {
+		if (colaborador == null)
+			colaborador = new Colaborador();
 		return colaborador;
 	}
 

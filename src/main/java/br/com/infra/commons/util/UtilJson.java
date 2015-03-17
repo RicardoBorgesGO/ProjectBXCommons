@@ -27,15 +27,16 @@ public class UtilJson {
 					.type(MediaType.APPLICATION_JSON)
 					.accept(MediaType.APPLICATION_JSON)
 					.post(ClientResponse.class, jsonData);
-			System.out.println(response.getEntity(String.class));
 
 			// Lancar excecao caso o status nao seja na centena 200.
 			if (!String.valueOf(response.getStatus()).substring(0, 1)
 					.equals("2")) {
 				throw response.getEntity(Exception.class);
 			}
+			
+			String resposta = response.getEntity(String.class);
 
-			return response.getEntity(String.class);
+			return resposta;
 		} catch (Exception e) {
 			e.printStackTrace();
 			// return "Substituir por exceção";
