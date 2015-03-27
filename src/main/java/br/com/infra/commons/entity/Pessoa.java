@@ -26,6 +26,7 @@ import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import br.com.infra.commons.constant.EnumEstadoCivil;
+import br.com.infra.commons.constant.EnumOperadoraCelular;
 import br.com.infra.commons.constant.EnumSexo;
 import br.com.infra.commons.util.CustomDateDeserializer;
 import br.com.infra.commons.util.CustomDefaultDateSerializer;
@@ -65,6 +66,13 @@ public class Pessoa implements Serializable {
 
 	@Column(name = "NUMERO_TELEFONE")
 	private String telefone;
+
+	@Column(name = "TELEFONE_CELULAR")
+	private String telefoneCelular;
+
+	@Column(name = "OPERADORA_CELULAR")
+	@Enumerated(EnumType.STRING)
+	private EnumOperadoraCelular operadoraCelular;
 
 	@Column(name = "EMAIL")
 	private String email;
@@ -121,6 +129,22 @@ public class Pessoa implements Serializable {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public String getTelefoneCelular() {
+		return telefoneCelular;
+	}
+
+	public void setTelefoneCelular(String telefoneCelular) {
+		this.telefoneCelular = telefoneCelular;
+	}
+
+	public EnumOperadoraCelular getOperadoraCelular() {
+		return operadoraCelular;
+	}
+
+	public void setOperadoraCelular(EnumOperadoraCelular operadoraCelular) {
+		this.operadoraCelular = operadoraCelular;
 	}
 
 	public Endereco getEndereco() {

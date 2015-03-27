@@ -25,6 +25,8 @@ public class Endereco implements Serializable {
 
 	private String cep;
 
+	private Integer numero;
+
 	private String logradouro;
 
 	private String complemento;
@@ -49,6 +51,14 @@ public class Endereco implements Serializable {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
 	}
 
 	public String getLogradouro() {
