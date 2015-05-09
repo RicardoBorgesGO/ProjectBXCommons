@@ -69,10 +69,32 @@ public class UtilJson {
 		return list;
 	}
 
-	@SuppressWarnings("unchecked")
-	public static <T> List<T> getAllObjectJson(String resourceUrl,
-			Type objectType) {
-		List<T> list = null;
+//	@SuppressWarnings("unchecked")
+//	public static <T> List<T> getAllObjectJson(String resourceUrl, Type objectType) {
+//		List<T> list = null;
+//
+//		try {
+//			WebResource webResource = getClient().resource(resourceUrl);
+//
+//			ClientResponse response = webResource.accept(
+//					MediaType.APPLICATION_JSON).get(ClientResponse.class);
+//
+//			if (response.getStatus() != 200) {
+//				throw new RuntimeException("Failed : HTTP error code : "
+//						+ response.getStatus());
+//			}
+//
+//			String output = response.getEntity(String.class);
+//
+//			list = (List<T>) UtilConverter.jsonToObject(output, objectType);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return list;
+//	}
+	
+	public static String getAllObjectJson(String resourceUrl, Type objectType) {
+		String json = null;
 
 		try {
 			WebResource webResource = getClient().resource(resourceUrl);
@@ -85,12 +107,12 @@ public class UtilJson {
 						+ response.getStatus());
 			}
 
-			String output = response.getEntity(String.class);
+			return response.getEntity(String.class);
 
-			list = (List<T>) UtilConverter.jsonToObject(output, objectType);
+//			list = (List<T>) UtilConverter.jsonToObject(output, objectType);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return list;
+		return json;
 	}
 }
