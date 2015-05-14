@@ -19,9 +19,10 @@ import javax.persistence.Transient;
 
 
 
-import br.com.infra.commons.constant.RoleEnum;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.codehaus.jackson.annotate.JsonIgnore;
+
+import br.com.infra.commons.constant.RoleEnum;
 
 @Entity
 @Table(name = "USUARIO", schema = "PUBLIC")
