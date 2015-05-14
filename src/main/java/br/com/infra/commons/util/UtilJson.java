@@ -1,6 +1,5 @@
 package br.com.infra.commons.util;
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.ws.rs.core.MediaType;
@@ -72,6 +71,7 @@ public class UtilJson {
 	}
 
 	@SuppressWarnings("unchecked")
+	@Deprecated
 	public static <T> List<T> getAllObjectJson(String resourceUrl,
 			Class<T> objectType) {
 		List<T> list = null;
@@ -96,31 +96,7 @@ public class UtilJson {
 		return list;
 	}
 
-//	@SuppressWarnings("unchecked")
-//	public static <T> List<T> getAllObjectJson(String resourceUrl, Type objectType) {
-//		List<T> list = null;
-//
-//		try {
-//			WebResource webResource = getClient().resource(resourceUrl);
-//
-//			ClientResponse response = webResource.accept(
-//					MediaType.APPLICATION_JSON).get(ClientResponse.class);
-//
-//			if (response.getStatus() != 200) {
-//				throw new RuntimeException("Failed : HTTP error code : "
-//						+ response.getStatus());
-//			}
-//
-//			String output = response.getEntity(String.class);
-//
-//			list = (List<T>) UtilConverter.jsonToObject(output, objectType);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return list;
-//	}
-	
-	public static String getAllObjectJson(String resourceUrl, Type objectType) {
+	public static String getObjectJson(String resourceUrl) {
 		String json = null;
 
 		try {
