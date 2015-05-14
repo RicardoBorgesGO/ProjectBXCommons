@@ -43,6 +43,33 @@ public class UtilJson {
 			return MensagemRespostaServico.ERRO_NAO_CADASTRADO.getMensagem();
 		}
 	}
+	
+	public static boolean postVerifyJson(String resourceUrl, String jsonData) {
+		try {
+			WebResource webResource = getClient().resource(resourceUrl);
+
+			ClientResponse response = webResource
+					.type(MediaType.APPLICATION_JSON)
+					.accept(MediaType.APPLICATION_JSON)
+					.post(ClientResponse.class, jsonData);
+
+			// Lancar excecao caso o status nao seja na centena 200.
+			if (!String.valueOf(response.getStatus()).substring(0, 1)
+					.equals("2")) {
+				throw response.getEntity(Exception.class);
+			}
+			
+			boolean resposta = response.getEntity(Boolean.class);
+
+			return resposta;
+		} catch (Exception e) {
+			e.printStackTrace();
+			// return "Substituir por exceção";
+//			return MensagemRespostaServico.ERRO_NAO_CADASTRADO.getMensagem();
+		}
+		
+		return false;
+	}
 
 	@SuppressWarnings("unchecked")
 	public static <T> List<T> getAllObjectJson(String resourceUrl,
